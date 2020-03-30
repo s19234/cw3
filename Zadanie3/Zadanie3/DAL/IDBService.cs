@@ -8,6 +8,6 @@ namespace Zadanie3.DAL
 {
     public interface IDBService
     {
-        public IEnumerable<Student> GetStudents();
+        public ICollection<Student> GetStudents();
     }
 }
