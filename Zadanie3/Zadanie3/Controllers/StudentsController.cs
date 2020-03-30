@@ -16,5 +16,22 @@ namespace Zadanie3.Controllers
         {
             return "Kowalski, Malewski, Andrzejewski";
         }
+
+        /// <summary>
+        /// Metoda do zwracania studenta
+        /// </summary>
+        /// <param name="id">Id studenta</param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public IActionResult GetStudent(int id)
+        {
+            if (id == 1)
+                return Ok("Kowalski");
+            else if (id == 2)
+                return Ok("Malewski");
+            else if (id == 3)
+                return Ok("Andrzejewski");
+            return NotFound("Student not found");
+        }
     }
 }
