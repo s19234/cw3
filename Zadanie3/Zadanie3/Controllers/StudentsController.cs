@@ -12,9 +12,9 @@ namespace Zadanie3.Controllers
     public class StudentsController : ControllerBase
     {
         [HttpGet]
-        public string GetStudents()
+        public string GetStudents(string orderBy)
         {
-            return "Kowalski, Malewski, Andrzejewski";
+            return $"Kowalski, Malewski, Andrzejewski sortowanie={orderBy}";
         }
 
         /// <summary>
