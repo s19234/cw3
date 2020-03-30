@@ -14,8 +14,8 @@ namespace Zadanie3.Models
 
         public int CompareTo(object obj)
         {
-            Student student = obj as Student;
-            return this.IdStudent - student.IdStudent;
+            int index = (int)obj;
+            return this.IdStudent - index;
         }
     }
 }
