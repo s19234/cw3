@@ -8,7 +8,7 @@ namespace Zadanie3.DAL
 {
     public class MockDBService : IDBService
     {
-        private static IEnumerable<Student> _students;
+        private static ICollection<Student> _students;
 
         static MockDBService()
         {
@@ -20,9 +20,11 @@ namespace Zadanie3.DAL
             };
         }
 
-        public IEnumerable<Student> GetStudents()
+        public ICollection<Student> GetStudents()
         {
             return _students;
         }
+
+
     }
 }
