@@ -12,6 +12,13 @@ namespace Zadanie3.Models
         public string LastName { get; set; }
         public string IndexNumber { get; set; }
 
+        public Student(int idStudent, string firstName, string lastName)
+        {
+            this.IdStudent = idStudent;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         public int CompareTo(object obj)
         {
             int index = (int)obj;
