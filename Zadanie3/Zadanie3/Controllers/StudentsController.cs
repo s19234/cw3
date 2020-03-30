@@ -47,7 +47,7 @@ namespace Zadanie3.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteStudent(string index)
+        public IActionResult DeleteStudent(int index)
         {
             foreach(Student student in list)
             {
@@ -55,6 +55,19 @@ namespace Zadanie3.Controllers
                 {
                     list.Remove(student);
                     return Ok("Student removed");
+                }
+            }
+            return NotFound("Student not found");
+        }
+
+        [HttpPut]
+        public IActionResult ActStudent(int index)
+        {
+            foreach(Student student in list)
+            {
+                if(student.CompareTo(index) == 0)
+                {
+                    return Ok("Student act");
                 }
             }
             return NotFound("Student not found");
