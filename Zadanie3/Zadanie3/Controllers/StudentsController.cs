@@ -11,10 +11,8 @@ namespace Zadanie3.Controllers
 {
     [Route("api/students")]
     [ApiController]
-
     public class StudentsController : ControllerBase
     {
-        private List<Student> list = new List<Student>();
         private readonly IDBService _dbService;
 
         public StudentsController(IDBService dbService)
@@ -49,18 +47,18 @@ namespace Zadanie3.Controllers
         public IActionResult CreateStudent(Student student)
         {
             student.IndexNumber = $"s{new Random().Next(1, 20000)}";
-            list.Add(student);
+            _dbService.GetStudents().Add(student);
             return Ok(student);
         }
 
         [HttpDelete]
         public IActionResult DeleteStudent(int index)
         {
-            foreach(Student student in list)
+            foreach(Student student in _dbService.GetStudents())
             {
                 if (student.CompareTo(index) == 0)
                 {
-                    list.Remove(student);
+                    _dbService.GetStudents().Remove(student);
                     return Ok("Student removed");
                 }
             }
@@ -70,7 +68,7 @@ namespace Zadanie3.Controllers
         [HttpPut]
         public IActionResult ActStudent(int index)
         {
-            foreach(Student student in list)
+            foreach(Student student in _dbService.GetStudents())
             {
                 if(student.CompareTo(index) == 0)
                 {
@@ -79,7 +77,5 @@ namespace Zadanie3.Controllers
             }
             return NotFound("Student not found");
         }
-
-        
     }
 }
