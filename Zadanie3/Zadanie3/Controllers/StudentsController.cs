@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Zadanie3.Models;
+using Zadanie3.DAL;
 
 namespace Zadanie3.Controllers
 {
@@ -14,11 +15,17 @@ namespace Zadanie3.Controllers
     public class StudentsController : ControllerBase
     {
         private List<Student> list = new List<Student>();
+        private readonly IDBService _dbService;
+
+        public StudentsController(IDBService dbService)
+        {
+            _dbService = dbService;
+        }
 
         [HttpGet]
-        public string GetStudents(string orderBy)
+        public IActionResult GetStudents(string orderBy)
         {
-            return $"Kowalski, Malewski, Andrzejewski sortowanie={orderBy}";
+            return Ok(_dbService.GetStudents());
         }
 
         /// <summary>
@@ -72,5 +79,7 @@ namespace Zadanie3.Controllers
             }
             return NotFound("Student not found");
         }
+
+        
     }
 }
